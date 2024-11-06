@@ -24,4 +24,5 @@ public class Worker {
     @OneToMany(mappedBy = "worker")
     private List<Request> requests;
 
+
 }
