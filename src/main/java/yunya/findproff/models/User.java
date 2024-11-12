@@ -1,10 +1,14 @@
 package yunya.findproff.models;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
+@Builder
+@Data
 public class User {
 
     @Id

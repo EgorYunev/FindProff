@@ -1,5 +1,6 @@
 package yunya.findproff.services.impl;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import yunya.findproff.models.City;
 import yunya.findproff.models.Specialization;
@@ -11,13 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class WorkerServiceImpl implements WorkerService {
 
     private final WorkerRepository workerRepository;
-
-    public WorkerServiceImpl(WorkerRepository workerRepository) {
-        this.workerRepository = workerRepository;
-    }
 
     @Override
     public void addWorker(Worker worker) {

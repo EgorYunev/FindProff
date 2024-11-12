@@ -18,7 +18,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(User user) {
-        userRepo.save(user);
+        if (userRepo.findByEmail(user.getEmail()).isPresent()) {
+            throw new RuntimeException("Email is busy");
+        } else if (userRepo.findByUsername(user.getUsername()).isPresent()) {
+            throw new RuntimeException("Username is busy");
+        } else {
+            userRepo.save(user);
+        }
     }
 
     @Override
@@ -39,7 +45,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUserById(User user) {
-        userRepo.delete(user);
+    public void deleteUserById(int id) {
+        userRepo.deleteById(id);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        Optional<User> op = userRepo.findByEmail(email);
+        if (op.isPresent()) {
+            return op.get();
+        } else {
+            throw new RuntimeException("user cannot found " + email);
+        }
     }
 }
