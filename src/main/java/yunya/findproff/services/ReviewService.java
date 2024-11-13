@@ -12,5 +12,5 @@ public interface ReviewService {
 
     void deleteReviewById(int id);
 
-    List<Review> getReviews();
+    List<Review> getReviewsByUsername(String username);
 }
