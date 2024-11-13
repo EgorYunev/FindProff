@@ -17,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/worker")
 public class WorkerController {
+
     private final WorkerService workerService;
 
     @GetMapping("get-necessary-workers")

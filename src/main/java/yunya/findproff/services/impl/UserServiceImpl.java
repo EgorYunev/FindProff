@@ -1,5 +1,6 @@
 package yunya.findproff.services.impl;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import yunya.findproff.models.User;
 import yunya.findproff.repositories.UserRepo;
@@ -8,11 +9,8 @@ import yunya.findproff.services.UserService;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
-
-    public UserServiceImpl(UserRepo userRepo) {
-        this.userRepo = userRepo;
-    }
 
     private final UserRepo userRepo;
 
