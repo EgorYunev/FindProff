@@ -17,8 +17,10 @@ public class Worker {
     @OneToMany(mappedBy = "worker")
     private List<Review> reviews;
 
+    @ManyToOne(targetEntity = Specialization.class)
     private Specialization specialization;
 
+    @ManyToOne(targetEntity = City.class)
     private City city;
 
     @OneToMany(mappedBy = "worker")

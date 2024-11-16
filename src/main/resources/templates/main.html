@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/styles/styles.css}">
+    <title>Document</title>
+</head>
+<body>
+        <div class="head">
+            <h1 class="header">FindProff</h1>
+            <a th:href="@{/my-account}">Аккаунт</a>
+            <div class="dropdown">
+                <button class="dropbtn">Выпадающее</button>
+                <div class="dropdown-content" th:each="cities:${cities}">
+                    <span th:text="${cities:name}"></span>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Выпадающее</button>
+                <div class="dropdown-content" th:each="specializations:${specializations}">
+                    <span th:text="${specializations:name}"></span>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
