@@ -26,10 +26,17 @@ public class PagesController {
         List<City> cities = cityRepository.findAll();
         List<Specialization> specializations = specializationRepository.findAll();
 
-        model.addAttribute(cities);
-        model.addAttribute(specializations);
-
+        model.addAttribute("cities", cities);
+        model.addAttribute("specialization", specializations);
+        for (City city : cities) {
+            System.out.println(city.getName());
+        }
         return "main";
+    }
+
+    @GetMapping("/registration")
+    public String registration() {
+        return "registration";
     }
 
 }

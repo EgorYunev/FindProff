@@ -6,4 +6,5 @@ import yunya.findproff.models.Specialization;
 
 @Repository
 public interface SpecializationRepository extends JpaRepository<Specialization, Integer> {
+    Specialization getSpecializationByName(String name);
 }

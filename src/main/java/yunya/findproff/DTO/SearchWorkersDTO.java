@@ -7,8 +7,8 @@ import yunya.findproff.models.Specialization;
 @Data
 public class SearchWorkersDTO {
 
-    City city;
+    String city;
 
-    Specialization specialization;
+    String specialization;
 
 }

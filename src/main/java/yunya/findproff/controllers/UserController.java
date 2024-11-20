@@ -1,6 +1,7 @@
 package yunya.findproff.controllers;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import yunya.findproff.models.Worker;
 import yunya.findproff.services.UserService;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,12 +22,17 @@ public class UserController {
 
     private final UserService userService;
 
+    private final PasswordEncoder passwordEncoder;
+
     @PostMapping("/save")
     public String saveUser(@ModelAttribute UserDTO dto) {
         User user = User.builder()
                 .username(dto.getUsername())
                 .email(dto.getEmail())
-                .password(dto.getPassword())
+                .password(passwordEncoder.encode(dto.getPassword()))
+                .roles("USER")
+                .requests(new ArrayList<>())
+                .reviews(new ArrayList<>())
                 .build();
         userService.addUser(user);
         return "success";

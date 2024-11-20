@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <h1>FindProff</h1>
+    <div>
+        <div th:each="worker:${workers}">
+            <p th:text="${worker.user.username}"></p>
+            <div th:each="review:${worker.reviews}">
+                <p th:text="${review.text}"></p>
+                <p th:text="${review.evaluation}"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
