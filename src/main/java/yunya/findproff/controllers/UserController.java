@@ -5,15 +5,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import yunya.findproff.DTO.SearchWorkersDTO;
 import yunya.findproff.DTO.UserDTO;
 import yunya.findproff.models.User;
-import yunya.findproff.models.Worker;
 import yunya.findproff.services.UserService;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @AllArgsConstructor
@@ -64,6 +61,5 @@ public class UserController {
         userService.deleteUserById(user.getId());
         return "success";
     }
-
 
 }

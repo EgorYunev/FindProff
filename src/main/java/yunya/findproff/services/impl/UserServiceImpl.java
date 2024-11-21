@@ -34,6 +34,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUsername(String username) {
         Optional<User> op = userRepo.findByUsername(username);
+        System.out.println(op.isPresent());
         return op.orElse(null);
     }
 

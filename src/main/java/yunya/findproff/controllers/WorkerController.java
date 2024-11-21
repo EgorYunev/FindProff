@@ -3,10 +3,7 @@ package yunya.findproff.controllers;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import yunya.findproff.DTO.SearchWorkersDTO;
 import yunya.findproff.models.City;
 import yunya.findproff.models.Specialization;
@@ -34,25 +31,29 @@ public class WorkerController {
 
     private final SpecializationRepository specializationRepository;
 
-    @PostMapping("/save/{city}/{spec}")
-    public String saveWorker(Principal principal, City city, Specialization spec) {
+    @PostMapping("/save")
+    public String saveWorker(Principal principal, @RequestParam int cityId, @RequestParam int specId) {
         User user = userService.getUserByUsername(principal.getName());
+        System.out.println(principal.getName());
         Worker worker = Worker.builder()
                 .user(user)
-                .specialization(spec)
-                .city(city)
+                .specialization(specializationRepository.getSpecializationById(specId))
+                .city(cityRepository.getCityById(cityId))
                 .reviews(new ArrayList<>())
                 .requests(new ArrayList<>())
                 .build();
+        user.setWorker(worker);
+        userService.changeUser(user);
         return "success";
     }
 
     @GetMapping("/get-necessary-workers")
-    public String getNecessaryWorkers(@ModelAttribute SearchWorkersDTO dto, Model model) {
-        City city = cityRepository.getCityByName(dto.getCity());
-        Specialization specialization = specializationRepository.getSpecializationByName(dto.getSpecialization());
+    public String getNecessaryWorkers(@RequestParam int cityId, @RequestParam int specId, Model model) {
+        City city = cityRepository.getCityById(cityId);
+        Specialization specialization = specializationRepository.getSpecializationById(specId);
         List<Worker> workers = workerService.getWorkersBySpecializationAndCity(specialization, city);
         model.addAttribute("workers", workers);
+        System.out.println(workers);
         return "workers";
     }
 

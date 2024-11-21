@@ -27,11 +27,18 @@ public class PagesController {
         List<Specialization> specializations = specializationRepository.findAll();
 
         model.addAttribute("cities", cities);
-        model.addAttribute("specialization", specializations);
+        model.addAttribute("specializations", specializations);
         for (City city : cities) {
             System.out.println(city.getName());
         }
         return "main";
+    }
+
+    @GetMapping("/workerForm")
+    public String workerForm(Model model) {
+        model.addAttribute("cities", cityRepository.findAll());
+        model.addAttribute("specializations",specializationRepository.findAll());
+        return "workerForm";
     }
 
     @GetMapping("/registration")

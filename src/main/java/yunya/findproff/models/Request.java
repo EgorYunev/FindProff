@@ -4,13 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,4 +24,12 @@ public class Request {
     @ManyToOne(targetEntity = Worker.class)
     private Worker worker;
 
+    @Override
+    public String toString() {
+        return "Request{" +
+                "id=" + id +
+                ", user=" + user +
+                ", worker=" + worker +
+                '}';
+    }
 }

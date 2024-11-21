@@ -1,10 +1,7 @@
 package yunya.findproff.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +9,8 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Builder
 public class Worker {
 
@@ -35,5 +33,13 @@ public class Worker {
     @OneToMany(mappedBy = "worker")
     private List<Request> requests;
 
-
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "id=" + id +
+                ", user=" + user +
+                ", specialization=" + specialization +
+                ", city=" + city +
+                '}';
+    }
 }

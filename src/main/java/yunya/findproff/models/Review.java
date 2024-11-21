@@ -2,14 +2,12 @@ package yunya.findproff.models;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Builder
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Review {
@@ -28,4 +26,13 @@ public class Review {
     @ManyToOne(targetEntity = Worker.class)
     private Worker worker;
 
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", evaluation=" + evaluation +
+                ", text='" + text + '\'' +
+                ", user=" + user +
+                '}';
+    }
 }

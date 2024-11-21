@@ -6,10 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <form th:action="@{/worker/save}">
-        <input type="text" name="city">
-        <input type="text" name="spec">
-        <button type="submit" th:text="Стать специалистом!"></button>
+<div class="head">
+    <h1>FindProff</h1>
+</div>
+    <form th:action="@{/worker/save}" method="post">
+        <span>Выберете город</span>
+        <select name="cityId">
+            <option>select option</option>
+            <option th:each="city:${cities}" th:value="${city.id}" th:text="${city.name}"></option>
+        </select>
+        <select name="specId">
+            <option>select option</option>
+            <option th:each="spec:${specializations}" th:value="${spec.id}" th:text="${spec.name}"></option>
+        </select>
+        <button type="submit">Стать специалистом!</button>
     </form>
 </body>
 </html>

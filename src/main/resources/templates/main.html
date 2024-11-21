@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,16 +10,17 @@
         <div class="head">
             <h1 class="header">FindProff</h1>
             <a th:href="@{/my-account}">Аккаунт</a>
-
-            <p>Город</p>
+            <a th:href="@{/pages/workerForm}">Стать специалистом!</a>
             <form th:action="@{/worker/get-necessary-workers}" method="get">
-                <select>
+                <span>Город:</span>
+                <select name="cityId">
                     <option value="0">select option</option>
-                    <option th:each="city:${cities}" th:value="${city.name}" th:text="${city.name}"></option>
+                    <option th:each="city:${cities}" th:value="${city.id}" th:text="${city.name}"></option>
                 </select>
-                <select>
-                    <option value="выберете специализацию"></option>
-                    <option th:each="spec:${specializations}" th:value="${spec.name}" th:text="${spec.name}"></option>
+                <span>Специализация</span>
+                <select name="specId">
+                    <option value="0">select option</option>
+                    <option th:each="spec:${specializations}" th:value="${spec.id}" th:text="${spec.name}"></option>
                 </select>
                 <input type = "submit" value = "подтвердить">
             </form>
