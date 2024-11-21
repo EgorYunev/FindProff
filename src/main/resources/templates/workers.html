@@ -10,8 +10,8 @@
     <div>
         <div th:each="worker:${workers}">
             <p th:text="${worker.user.username}"></p>
-            <p th:text="${worker.specialization}"></p>
-            <p th:text="${worker.city}"></p>
+            <p th:text="${worker.specialization.name}"></p>
+            <p th:text="${worker.city.name}"></p>
             <div th:each="review:${worker.reviews}">
                 <p th:text="${review.text}"></p>
                 <p th:text="${review.evaluation}"></p>

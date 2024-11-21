@@ -10,6 +10,8 @@ import java.util.List;
 @Service
 public interface WorkerService {
 
+    void changeWorker(Worker worker);
+
     void addWorker(Worker worker);
 
     Worker getWorkerById(int id);

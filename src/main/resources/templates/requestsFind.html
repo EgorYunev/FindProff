@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <div class="head">
+        <h1>FindProff</h1>
+    </div>
+
+    <div th:each="request:${requests}">
+        <div class="each-request">
+            <form th:action="@{/requests/apply/(id=${request.id})}">
+                <p th:text="${request.user.username}"></p>
+                <p th:text="${request.city.name}"></p>
+                <p th:text="${request.specialization.name}"></p>
+                <button type="submit">Откликнуться</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

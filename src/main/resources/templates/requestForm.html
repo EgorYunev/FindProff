@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+    <div class="head">
+        <h1>FindProff</h1>
+    </div>
+
+    <form th:action="@{/requests/add}" method="post">
+        <select name="cityId">
+            <option>select option</option>
+            <option th:each="city:${cities}" th:text="${city.name}" th:value="${city.id}"></option>
+        </select>
+        <select name="specId">
+            <option th:each="spec:${specializations}" th:value="${spec.id}" th:text="${spec.name}"></option>
+        </select>
+        <input type="text" name="text" placeholder="введите текст запроса">
+        <button type="submit">Отправить запрос!</button>
+    </form>
+</body>
+</html>

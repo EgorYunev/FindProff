@@ -21,8 +21,16 @@ public class Request {
     @ManyToOne(targetEntity = User.class)
     private User user;
 
+    private String text;
+
     @ManyToOne(targetEntity = Worker.class)
     private Worker worker;
+
+    @ManyToOne(targetEntity = City.class)
+    private City city;
+
+    @ManyToOne(targetEntity = Specialization.class)
+    private Specialization specialization;
 
     @Override
     public String toString() {

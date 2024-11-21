@@ -21,6 +21,24 @@ public class RequestServiceImpl implements RequestService {
 
 
     @Override
+    public Request getRequestById(int id) {
+        Optional<Request> op = requestRepo.findById(id);
+        return op.orElse(null);
+    }
+
+    @Override
+    public List<Request> getRequestsByCityAndSpec(int cityId, int specId) {
+        List<Request> requests = requestRepo.getRequestsByCity_IdAndSpecialization_Id(cityId, specId);
+        for (int i = 0; i < requests.size(); i++) {
+            Request request = requests.get(i);
+            if (request.getWorker() != null) {
+                requests.remove(i);
+            }
+        }
+        return requests;
+    }
+
+    @Override
     public void addRequest(Request request) {
         requestRepo.save(request);
     }

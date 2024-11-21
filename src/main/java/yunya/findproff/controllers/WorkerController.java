@@ -34,6 +34,7 @@ public class WorkerController {
     @PostMapping("/save")
     public String saveWorker(Principal principal, @RequestParam int cityId, @RequestParam int specId) {
         User user = userService.getUserByUsername(principal.getName());
+        user.setRoles("USER, WORKER");
         System.out.println(principal.getName());
         Worker worker = Worker.builder()
                 .user(user)

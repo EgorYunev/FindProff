@@ -1,9 +1,6 @@
 package yunya.findproff.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
@@ -24,6 +21,9 @@ public class Specialization {
 
     @OneToMany(mappedBy = "specialization")
     private List<Worker> workers;
+
+    @OneToMany(mappedBy = "specialization")
+    private List<Request> requests;
 
     @Override
     public String toString() {

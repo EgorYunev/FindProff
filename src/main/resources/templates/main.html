@@ -10,6 +10,9 @@
         <div class="head">
             <h1 class="header">FindProff</h1>
             <a th:href="@{/my-account}">Аккаунт</a>
+            <a th:href="@{/requests/get}">Мои запросы</a>
+            <a th:href="@{/pages/requestForm}">Создать запрос</a>
+            <a th:href="@{/requests/find}">Поиск запросов(для специалистов)</a>
             <a th:href="@{/pages/workerForm}">Стать специалистом!</a>
             <form th:action="@{/worker/get-necessary-workers}" method="get">
                 <span>Город:</span>

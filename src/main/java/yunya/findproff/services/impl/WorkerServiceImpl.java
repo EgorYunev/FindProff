@@ -18,6 +18,11 @@ public class WorkerServiceImpl implements WorkerService {
     private final WorkerRepository workerRepository;
 
     @Override
+    public void changeWorker(Worker worker) {
+        workerRepository.save(worker);
+    }
+
+    @Override
     public void addWorker(Worker worker) {
         workerRepository.save(worker);
     }

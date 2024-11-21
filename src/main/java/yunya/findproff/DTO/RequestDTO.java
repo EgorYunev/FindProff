@@ -6,6 +6,10 @@ import yunya.findproff.models.Worker;
 @Data
 public class RequestDTO {
 
-    Worker worker;
+    int cityId;
+
+    int specId;
+
+    String text;
 
 }

@@ -46,4 +46,11 @@ public class PagesController {
         return "registration";
     }
 
+    @GetMapping("/requestForm")
+    public String requestForm(Model model) {
+        model.addAttribute("cities", cityRepository.findAll());
+        model.addAttribute("specializations", specializationRepository.findAll());
+        return "requestForm";
+    }
+
 }
