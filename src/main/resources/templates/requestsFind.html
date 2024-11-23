@@ -12,8 +12,10 @@
 
     <div th:each="request:${requests}">
         <div class="each-request">
-            <form th:action="@{/requests/apply/(id=${request.id})}">
+            <form th:action="@{/requests/apply}" th:object="${request}" method="post">
+                <input type="hidden" name="id" th:value="${request.id}">
                 <p th:text="${request.user.username}"></p>
+                <p th:text="${request.text}"></p>
                 <p th:text="${request.city.name}"></p>
                 <p th:text="${request.specialization.name}"></p>
                 <button type="submit">Откликнуться</button>
